@@ -30,6 +30,54 @@
       .profile-container:hover .hover-img {
         opacity: 1;
       }
+
+      .poster-img {
+        width: 100%;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .poster-img:hover {
+        transform: scale(1.05);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.9);
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 90%;
+        max-width: 1200px;
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
     </style>
   </head>
 
@@ -104,7 +152,6 @@
                     <h2>Research</h2>
                     <p>
                       My goal is to build on-device agentic autonomy that synergizes perception, reasoning, planning, and control to achieve human-like intelligence for physical embodiments, including autonomous drones, self-driving cars, and robotics. 
-                      <br><br>
                       I am particularly interested in developing efficient Machine Learning and AI Systems for resource-constrained edge platforms operating in unstructured environments.
                       <!-- <br><br> -->
                     </p>
@@ -398,6 +445,69 @@
 
               </tbody>
             </table>
+
+            <!-- Posters Section -->
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding:16px;width:100%;vertical-align:middle">
+                    <h2>Posters</h2>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                
+                <!-- Poster Item 1 -->
+                <tr>
+                  <td style="padding:16px;width:100%;vertical-align:middle">
+                    <img src="pdf/poster/Poster_IROS2023.pdf" class="poster-img" alt="IROS 2023 Poster" onclick="openModal(this.src)" width="100%">
+                    <p style="text-align:center; margin-top:8px;">
+                      <strong>V2X-lead: LiDAR-based end-to-end autonomous driving</strong><br>
+                      IROS 2023
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Poster Item 2 -->
+                <tr>
+                  <td style="padding:16px;width:100%;vertical-align:middle">
+                    <img src="pdf/poster/Poster_WACV2026.pdf" class="poster-img" alt="WACV 2026 Poster" onclick="openModal(this.src)" width="100%">
+                    <p style="text-align:center; margin-top:8px;">
+                      <strong>AirLock+: Scaling UAV-to-Satellite Image Registration</strong><br>
+                      WACV 2026
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Add more posters here -->
+
+              </tbody>
+            </table>
+
+            <!-- Modal for full-size poster viewing -->
+            <div id="posterModal" class="modal" onclick="closeModal()">
+              <span class="close">&times;</span>
+              <img class="modal-content" id="modalImg">
+            </div>
+
+            <script>
+              function openModal(src) {
+                document.getElementById('posterModal').style.display = 'block';
+                document.getElementById('modalImg').src = src;
+              }
+
+              function closeModal() {
+                document.getElementById('posterModal').style.display = 'none';
+              }
+
+              document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                  closeModal();
+                }
+              });
+            </script>
 
             <!-- Honors & Awards Section -->
             <!-- <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
